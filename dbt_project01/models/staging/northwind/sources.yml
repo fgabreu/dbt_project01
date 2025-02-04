@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: northwind
+    description: "Dados brutos do sistema de vendas da empresa"
+    schema: dbt_dw
+    loader: bigquery
+
+    tables:
+      - name: orders
+        description: "Tabela com os pedidos da empresa"
+        columns:
+          - name: orderid
+          - name: customerid
+          - name: employeeid
+          - name: orderdate
+          - name: requireddate
+          - name: shippeddate
+          - name: shipvia
+          - name: freight
+          - name: shipname
+          - name: shipcity
+          - name: shipregion
+          - name: shippostalcode
+          - name: shipcountry
