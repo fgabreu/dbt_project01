@@ -1,0 +1,62 @@
+version: 2
+
+sources:
+  - name: finance
+    description: "Dados brutos do sistema financeiro da empresa"
+    schema: data_set_fiancial
+    loader: bigquery
+    loaded_at_field: loaded_at
+    meta:
+      owner: "Empresa X"
+    freshness:
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+
+    tables:
+      - name: dados_financeiros
+        description: "Tabela com os lancamentos financeiros da empresa"
+        columns:
+          - name: id
+            description: "Identificador do lancamento"
+            tests:
+              - unique
+          - name: data
+            description: "Data do lancamento"
+            tests:
+              - not_null
+          - name: valor
+            description: "Valor do lancamento"
+            tests:
+              - not_null
+          - name: tipo
+            description: "Tipo do lancamento"
+            tests:
+              - not_null
+          - name: descricao
+            description: "Descricao do lancamento"
+            tests:
+              - not_null
+          - name: conta
+            description: "Conta do lancamento"
+            tests:
+              - not_null
+          - name: categoria
+            description: "Categoria do lancamento"
+            tests:
+              - not_null
+          - name: subcategoria
+            description: "Subcategoria do lancamento"
+            tests:
+              - not_null
+          - name: status
+            description: "Status do lancamento"
+            tests:
+              - not_null
+          - name: data_criacao
+            description: "Data de criacao do lancamento"
+            tests:
+              - not_null
+          - name: data_atualizacao
+            description: "Data de atualizacao do lancamento"
+            tests:
+              - not_null
